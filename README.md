@@ -30,7 +30,7 @@ Things you may want to cover:
 | Column             | Type   | Options                   |
 | ------------------ | ------ | ------------------------- |
 | nickname           | string | null: false               |
-| e_mail             | string | null: false, unique: true |
+| email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
 | family_name        | string | null: false               |
 | family_name_kana   | string | null: false               |
@@ -71,7 +71,6 @@ Things you may want to cover:
 | ---------- | ---------- | ------------------------------ |
 | user       | references | null: false, foreign_key: true |
 | item       | references | null: false, foreign_key: true |
-| credit_num | integer    | null: false                    |
 
 ### Association
 
@@ -81,15 +80,15 @@ Things you may want to cover:
 
 ## clients テーブル
 
-| Column              | Type       | Options                        |
-| ------------------- | ---------- | ------------------------------ |
-| order               | references | null: false, foreign_key: true |
-| post-code           | string     | null: false                    |
-| delivery_address_id | string     | null: false                    |
-| city                | string     | null: false                    |
-| block               | string     | null: false                    |
-| build               | string     |                                |
-| phone_num           | string     | null: false                    |
+| Column              | Type        | Options                        |
+| ------------------- | ----------- | ------------------------------ |
+| order               | references  | null: false, foreign_key: true |
+| post-code           | string      | null: false                    |
+| delivery_address_id | integer     | null: false                    |
+| city                | string      | null: false                    |
+| block               | string      | null: false                    |
+| build               | string      |                                |
+| phone_num           | string      | null: false                    |
 
 ### Association
 
