@@ -62,6 +62,16 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include ("Delivery time can't be blank")
       end
+      it 'priceが空では登録できない' do
+        @item.price = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include ("Price can't be blank")
+      end
+      it 'priceに半角英数字以外が含まれている場合は登録できない' do
+        @item.price = 'あああ'
+        @item.valid?
+        expect(@item.errors.full_messages).to include ("Price is not a number")
+      end
       it 'priceが300未満では登録できない' do
         @item.price = 100
         @item.valid?
