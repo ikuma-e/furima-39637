@@ -83,7 +83,7 @@ Things you may want to cover:
 | Column              | Type        | Options                        |
 | ------------------- | ----------- | ------------------------------ |
 | order               | references  | null: false, foreign_key: true |
-| post-code           | string      | null: false                    |
+| post_code           | string      | null: false                    |
 | delivery_address_id | integer     | null: false                    |
 | city                | string      | null: false                    |
 | block               | string      | null: false                    |
