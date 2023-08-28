@@ -12,7 +12,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-
   end
 
   def create
@@ -54,9 +53,9 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-  # ログインユーザーが出品者でない場合、強制的にトップページに移動させる
-  def contributor_confirmation
-    redirect_to root_path unless current_user == @item.user
-  end
 
+  # ログインユーザーが出品者でない,商品が売り切れの場合、強制的にトップページに移動させる
+  def contributor_confirmation
+    redirect_to root_path unless current_user == @item.user && @item.order.nil?
+  end
 end
