@@ -57,22 +57,26 @@ RSpec.describe OrderClient, type: :model do
         @order_client.valid?
         expect(@order_client.errors.full_messages).to include("Phone num can't be blank")
       end
-      it 'phone_numに文字が含まれていれば購入できない' do
+      it 'phone_numに半角数字以外が含まれていれば購入できない' do
         @order_client.phone_num = '111-111-1111'
         @order_client.valid?
-        expect(@order_client.errors.full_messages).to include("Phone num is invalid")
+        expect(@order_client.errors.full_messages).to include('Phone num is invalid')
       end
-      it 'phone_numが10,11桁以外では購入できない' do
+      it 'phone_numが9桁以下では購入できない' do
+        @order_client.phone_num = '1111'
+        @order_client.valid?
+        expect(@order_client.errors.full_messages).to include('Phone num is invalid')
+      end
+      it 'phone_numが12桁以上では購入できない' do
         @order_client.phone_num = '111111111111'
         @order_client.valid?
-        expect(@order_client.errors.full_messages).to include("Phone num is invalid")
+        expect(@order_client.errors.full_messages).to include('Phone num is invalid')
       end
       it 'tokenが空では購入できない' do
         @order_client.token = nil
         @order_client.valid?
         expect(@order_client.errors.full_messages).to include("Token can't be blank")
       end
-    
     end
   end
 end
