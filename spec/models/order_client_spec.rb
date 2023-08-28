@@ -36,6 +36,11 @@ RSpec.describe OrderClient, type: :model do
         @order_client.valid?
         expect(@order_client.errors.full_messages).to include("Post code can't be blank")
       end
+      it 'post_codeが半角ハイフンを含む形でなければ購入できない' do
+        @order_client.post_code = '1111111'
+        @order_client.valid?
+        expect(@order_client.errors.full_messages).to include("Post code is invalid")
+      end
       it 'delivery_address_idが「---」では購入できない' do
         @order_client.delivery_address_id = 1
         @order_client.valid?
