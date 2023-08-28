@@ -4,3 +4,4 @@ import "controllers"
 
 // 利益計算するJSファイルをインポート
 import "item_price"
+import "card"
