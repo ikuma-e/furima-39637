@@ -4,5 +4,4 @@ class Client < ApplicationRecord
   # ActiveHashとのアソシエーション
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :delivery_address
-  
 end
